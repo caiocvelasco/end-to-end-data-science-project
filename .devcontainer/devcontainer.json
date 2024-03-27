@@ -1,0 +1,12 @@
+{
+    "name": "Python PostgreSQL",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "python",
+    "workspaceFolder": "/workspace",
+    "extensions": [
+        "ms-python.python"
+    ],
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    }
+}
