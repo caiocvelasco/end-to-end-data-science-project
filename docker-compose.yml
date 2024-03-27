@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data # this volume specifies the postgres storage path
 
   python:
     build:
@@ -24,6 +24,17 @@ services:
     tty: true
     command: sleep infinity
     network_mode: service:postgres
+
+  # pgadmin:
+  #     image: dpage/pgadmin4
+  #     restart: unless-stopped
+  #     environment:
+  #       PGADMIN_DEFAULT_EMAIL: "pgadmin@example.com"  # Change this to your desired email address
+  #       PGADMIN_DEFAULT_PASSWORD: "pgadminpassword"   # Change this to your desired password
+  #     ports:
+  #       - "8080:80"  # Expose port 8080 on the host machine to access pgAdmin
+  #     depends_on:
+  #       - postgres
 
 volumes:
   pgdata:
