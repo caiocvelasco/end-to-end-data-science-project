@@ -1,4 +1,10 @@
 version: '3.8'
+
+# Create a custom network for bridging the containers
+networks:
+  etl_network: null
+
+# Create the services, i.e., the containers with their specific services inside
 services:
   postgres:
     image: postgres:latest
@@ -11,6 +17,9 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data # this volume specifies the postgres storage path
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init.sql # automatically create schemas/tables in the database mounting as a volume inside the docker entrypoint folder
+    networks:
+      - etl_network
 
   python:
     build:
@@ -23,14 +32,16 @@ services:
     stdin_open: true
     tty: true
     command: sleep infinity
-    network_mode: service:postgres
+    networks:
+      - etl_network
+    #network_mode: service:postgres
 
   # pgadmin:
   #     image: dpage/pgadmin4
   #     restart: unless-stopped
   #     environment:
-  #       PGADMIN_DEFAULT_EMAIL: "pgadmin@example.com"  # Change this to your desired email address
-  #       PGADMIN_DEFAULT_PASSWORD: "pgadminpassword"   # Change this to your desired password
+  #       PGADMIN_DEFAULT_EMAIL: "admin@example.com"  # Change this to your desired email address
+  #       PGADMIN_DEFAULT_PASSWORD: "admin"   # Change this to your desired password
   #     ports:
   #       - "8080:80"  # Expose port 8080 on the host machine to access pgAdmin
   #     depends_on:
