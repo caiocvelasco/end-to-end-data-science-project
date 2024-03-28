@@ -7,7 +7,8 @@ networks:
 # Create the services, i.e., the containers with their specific services inside
 services:
   postgres:
-    image: postgres:16
+    image: postgres:16 # The postgres service is using the "postgres:16" (check in cmd: docker ps)
+    container_name: postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -30,6 +31,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: python # The python service is using a custom image named "python" (check in cmd: docker ps)
+    container_name: python
     volumes:
       - .:/workspace    
     depends_on:
