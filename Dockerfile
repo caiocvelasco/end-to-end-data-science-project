@@ -16,14 +16,11 @@ RUN apt-get update && \
         rm -rf /var/lib/apt/lists/*
 
 # Install Jupyter Notebook and its dependencies
-RUN pip install --no-cache-dir jupyter
+# RUN pip install --no-cache-dir jupyter
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Expose port (if needed)
-# EXPOSE 8000
 
 # Copy the rest of the application
 COPY . .
