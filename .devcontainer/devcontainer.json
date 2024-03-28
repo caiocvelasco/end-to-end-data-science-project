@@ -7,6 +7,6 @@
         "ms-python.python"
     ],
     "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
+        "terminal.integrated.shell.linux": null
     }
 }

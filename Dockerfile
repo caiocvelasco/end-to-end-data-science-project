@@ -1,3 +1,4 @@
+# Set base image to PostgreSQL with matching client version
 FROM python:3.11
 
 # Set working directory
