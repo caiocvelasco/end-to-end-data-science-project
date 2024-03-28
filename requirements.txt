@@ -1,0 +1,3 @@
+psycopg2 #because I run sql commands on a python script
+sqlalchemy #because I run sql commands on a python script and because it depends on psycopg2
+faker #to ingest fake data via the python script with sql

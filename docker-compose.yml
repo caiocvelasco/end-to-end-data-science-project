@@ -4,7 +4,7 @@ version: '3.8'
 networks:
   etl_network: null
 
-# Create the services, i.e., the containers with their specific services inside
+# Create the services, i.e., the containers with their specific services inside (postgres, python, jupyter)
 services:
   postgres:
     image: postgres:16 # The postgres service is using the "postgres:16" (check in cmd: docker ps)
@@ -36,13 +36,31 @@ services:
     volumes:
       - .:/workspace    
     depends_on:
-      - postgres
+      - postgres # name of the service/image that is build before, generating dependency
     stdin_open: true
     tty: true
     command: sleep infinity
     networks:
       - etl_network
     #network_mode: service:postgres
+
+  # jupyter_notebook:
+  #     build:
+  #       context: .
+  #       dockerfile: Dockerfile
+  #     image: jupyter_notebook
+  #     container_name: jupyter_notebook
+  #     restart: unless-stopped
+  #     environment:
+  #       JUPYTER_ENABLE_LAB: "yes"
+  #     ports:
+  #       - "8888:8888"
+  #     volumes:
+  #       - .:/workspace
+  #     depends_on:
+  #     - postgres
+  #     networks:
+  #       - etl_network
 
   # pgadmin:
   #     image: dpage/pgadmin4
