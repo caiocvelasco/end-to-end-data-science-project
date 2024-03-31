@@ -42,7 +42,6 @@ services:
     command: sleep infinity
     networks:
       - etl_network
-    #network_mode: service:postgres
 
   # jupyter_notebook:
   #     build:
