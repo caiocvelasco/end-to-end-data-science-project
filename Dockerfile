@@ -36,5 +36,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
-
-# CMD ["python", "sql_query_script.py"]
