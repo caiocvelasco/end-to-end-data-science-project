@@ -1,4 +1,5 @@
 # Set base image to PostgreSQL with matching client version
+# Docker-compose will build the container based on this image
 FROM python:3.11
 
 # Set working directory
@@ -11,19 +12,29 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 # Install necessary dependencies
 RUN apt-get update && \
     apt-get install -y \
-        postgresql-client \
-        && apt-get clean && \   
+        postgresql-client && \
+        apt-get clean && \   
         rm -rf /var/lib/apt/lists/*
 
-# Install Jupyter Notebook and its dependencies
-# RUN pip install --no-cache-dir jupyter
+# Install ipykernel
+RUN pip install --no-cache-dir ipykernel
+
+# Add Python kernel to Jupyter
+RUN python -m ipykernel install --user --name python_postgresql --display-name "Python PostgreSQL"
+
+# Install Jupyter extension for VSCode
+RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/jupyter.sh)"
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Add Python kernel to Jupyter
+# RUN python -m ipykernel install --user --name python_postgresql --display-name "Python PostgreSQL"
+
 # Copy the rest of the application
 COPY . .
 
-# Set default command to start Jupyter Notebook
 # CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+
+# CMD ["python", "sql_query_script.py"]

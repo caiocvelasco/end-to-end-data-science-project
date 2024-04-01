@@ -4,7 +4,8 @@
     "service": "python",
     "workspaceFolder": "/workspace",
     "extensions": [
-        "ms-python.python"
+        "ms-python.python",
+        "ms-toolsai.jupyter"
     ],
     "settings": {
         "terminal.integrated.shell.linux": null
