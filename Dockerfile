@@ -29,10 +29,5 @@ RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/vscod
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Add Python kernel to Jupyter
-# RUN python -m ipykernel install --user --name python_postgresql --display-name "Python PostgreSQL"
-
 # Copy the rest of the application
 COPY . .
-
-# CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
