@@ -2,10 +2,11 @@ version: '3.8'
 
 # Create a custom network for bridging the containers
 networks:
-  etl_network: null
+  etl_network:
+    driver: bridge
 
 # Create the services, i.e., the containers with their specific services inside (postgres, python, jupyter)
-services:
+services:  
   postgres:
     image: postgres:16 # The postgres service is using the "postgres:16" (check in cmd: docker ps)
     container_name: postgres
@@ -22,19 +23,21 @@ services:
       - "5432"
     volumes:
       - pgdata:/var/lib/postgresql/data # this volume specifies the postgres storage path
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # automatically create schemas/tables in the database mounting as a volume inside the docker entrypoint folder
+      - ~/.ssh:/root/.ssh  # Mount SSH directory into the container
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # from the local init.sql, automatically create schemas/tables in the database mounting as a volume inside the docker entrypoint folder
     networks:
       - etl_network
 
   python:
     restart: unless-stopped
-    build:
+    build: #this 'build' tells docker-compose: don't just use the image, but build it from the Dockerfile
       context: .
       dockerfile: Dockerfile
     image: python # The python service is using a custom image named "python" (check in cmd: docker ps)
     container_name: python
     volumes:
-      - .:/workspace    
+      - .:/workspace
+      - ~/.ssh:/root/.ssh  # Mount SSH directory into the container 
     depends_on:
       - postgres # name of the service/image that is build before, generating dependency
     stdin_open: true
@@ -42,25 +45,24 @@ services:
     command: sleep infinity
     networks:
       - etl_network
-    #network_mode: service:postgres
 
-  # jupyter_notebook:
-  #     build:
-  #       context: .
-  #       dockerfile: Dockerfile
-  #     image: jupyter_notebook
-  #     container_name: jupyter_notebook
-  #     restart: unless-stopped
-  #     environment:
-  #       JUPYTER_ENABLE_LAB: "yes"
-  #     ports:
-  #       - "8888:8888"
-  #     volumes:
-  #       - .:/workspace
-  #     depends_on:
-  #     - postgres
-  #     networks:
-  #       - etl_network
+  jupyter_notebook:
+      image: jupyter/minimal-notebook
+      container_name: jupyter_notebook
+      restart: unless-stopped
+      environment:
+        - JUPYTER_TOKEN=123
+      #  - JUPYTER_ENABLE_LAB: "yes"
+      ports:
+        - "8888:8888"
+      volumes:
+        - .:/workspace
+        - ~/.ssh:/root/.ssh  # Mount SSH directory into the container
+      depends_on:
+        - python
+        - postgres
+      networks:
+        - etl_network
 
   # pgadmin:
   #     image: dpage/pgadmin4
