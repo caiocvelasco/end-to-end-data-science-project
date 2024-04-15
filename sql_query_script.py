@@ -11,7 +11,7 @@ engine = create_engine('postgresql://myuser:mypassword@postgres/mydatabase')
 
 # Checking the table names within the database
 insp = inspect(engine)
-print(insp.get_table_names(schema="schema_test"))
+print(insp.get_table_names(schema="schema_test")) # recall that postgres prefer lower case for names 
 
 # Connecting to the engine and executing a SELECT query
 with engine.connect() as conn:
