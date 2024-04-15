@@ -1,10 +1,19 @@
-from sqlalchemy import create_engine, text
+# We will use the SQLAlchemy package to access an postgres database
+
+# We start by importing the create_engine function.
+    # This engine fires up a SQL engine that will communicates out SQL queries to the database 
+from sqlalchemy import create_engine, text, inspect
 from faker import Faker
+import pandas as pd
 
 # Create the engine
 engine = create_engine('postgresql://myuser:mypassword@postgres/mydatabase')
 
-# Execute a SELECT query
+# Checking the table names within the database
+insp = inspect(engine)
+print(insp.get_table_names(schema="schema_test"))
+
+# Connecting to the engine and executing a SELECT query
 with engine.connect() as conn:
 
     faker = Faker('en_US')
@@ -23,9 +32,8 @@ with engine.connect() as conn:
 
     # Fetch and print the table after inserting the data
     select_query = text("SELECT * FROM SCHEMA_TEST.TABLE_TEST")
-    result = conn.execute(select_query)
-    rows = result.fetchall()
-
-    print("\nTable data after insertion:")
-    for row in rows:
-        print(row)
+    result = conn.execute(select_query) #Created a SQLAlchemy object that is assigned to the result variable
+    df = pd.DataFrame(result.fetchall()) #Fetches all rows
+    
+    # Print the table after inserting the data
+df.head()
