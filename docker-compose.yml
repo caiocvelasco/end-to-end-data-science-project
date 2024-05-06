@@ -22,24 +22,28 @@ services:
     expose:
       - "5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data # this volume specifies the postgres storage path
+      - pgdata:/var/lib/postgresql/data # This volume specifies the postgres storage path
       - ~/.ssh:/root/.ssh  # Mount SSH directory into the container
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # from the local init.sql, automatically create schemas/tables in the database mounting as a volume inside the docker entrypoint folder
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # From the local init.sql, automatically create schemas/tables in the database mounting as a volume inside the docker entrypoint folder
     networks:
       - etl_network
 
   python:
     restart: unless-stopped
-    build: #this 'build' tells docker-compose: don't just use the image, but build it from the Dockerfile
+    build: # This 'build' tells docker-compose: don't just use the image, but build it from the Dockerfile
       context: .
       dockerfile: Dockerfile
     image: python # The python service is using a custom image named "python" (check in cmd: docker ps)
     container_name: python
+    environment:
+      YELP_API_KEY: ${YELP_API_KEY}
+    env_file:
+    - ./.env
     volumes:
       - .:/workspace
       - ~/.ssh:/root/.ssh  # Mount SSH directory into the container 
     depends_on:
-      - postgres # name of the service/image that is build before, generating dependency
+      - postgres # Name of the service/image that is build before, generating dependency
     stdin_open: true
     tty: true
     command: sleep infinity

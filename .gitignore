@@ -3,3 +3,6 @@
 
 # Ignore the sources directory and everything inside it
 sources/
+
+# Ignore .env files
+.env
