@@ -41,7 +41,8 @@ services:
     - ./.env
     volumes:
       - .:/workspace
-      - ~/.ssh:/root/.ssh  # Mount SSH directory into the container 
+      - ~/.ssh:/root/.ssh  # Mount SSH directory into the container
+    working_dir: /workspace 
     depends_on:
       - postgres # Name of the service/image that is build before, generating dependency
     stdin_open: true
@@ -62,6 +63,7 @@ services:
       volumes:
         - .:/workspace
         - ~/.ssh:/root/.ssh  # Mount SSH directory into the container
+      working_dir: /workspace # Explicitly set the working directory for the Jupyter Notebook service to /workspace. Thus, os.getcwd() should return /workspace when executed within the Jupyter Notebook environment.
       depends_on:
         - python
         - postgres
