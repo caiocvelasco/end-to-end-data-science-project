@@ -1,4 +1,6 @@
 pycodestyle # A tool to check your Python code against some of the style conventions in PEP 8
+pytest # A framework that makes it easy to write small, readable tests
+ipytest # Pytest in Jupyter notebooks
 ipykernel
 jupyter
 pandas
