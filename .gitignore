@@ -2,7 +2,7 @@
 *.pyc
 
 # Ignore the sources directory and everything inside it
-sources/
+learning/
 
 # Ignore .env files
 .env
