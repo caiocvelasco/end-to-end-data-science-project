@@ -1,14 +1,15 @@
-pycodestyle # A tool to check your Python code against some of the style conventions in PEP 8
-pytest # A framework that makes it easy to write small, readable tests
+# pycodestyle # A tool to check your Python code against some of the style conventions in PEP 8
+# pytest # A framework that makes it easy to write small, readable tests
 ipytest # Pytest in Jupyter notebooks
 ipykernel
 jupyter
 pandas
-seaborn # For visualization
-matplotlib # For visualization
-openpyxl # Python library for reading and writing Excel
+numpy
+# seaborn # For visualization
+# matplotlib # For visualization
+# openpyxl # Python library for reading and writing Excel
 # xlrd # Python library for reading and writing Excel
-psycopg2 # Because I run sql commands on a python script
-sqlalchemy # Because I run sql commands on a python script and because it depends on psycopg2
-faker # To ingest fake data via the python script with sql
+# psycopg2 # Because I run sql commands on a python script
+# sqlalchemy # Because I run sql commands on a python script and because it depends on psycopg2
+# faker # To ingest fake data via the python script with sql
 # tweepy # If we want to access twitter api and manipulate jsons
