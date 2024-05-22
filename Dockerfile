@@ -1,6 +1,6 @@
 # Set base image to PostgreSQL with matching client version
 # Docker-compose will build the container based on this image
-FROM python:3.11
+FROM python:3.9.13
 
 # Set working directory
 WORKDIR /workspace
