@@ -1,4 +1,4 @@
-# Project Name
+# End-to-End Data Science Project
 
 A brief description of your project.
 
@@ -10,9 +10,7 @@ A brief description of your project.
   - [Environment Variables](#environment-variables)
   - [Build and Run](#build-and-run)
 - [Services](#services)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- (WORK IN PROGRESS)
 
 ## Project Structure
 
@@ -29,6 +27,20 @@ name_of_your_project_repo(project-root)/
 │ └── example_notebook.ipynb
 └── your_python_scripts/ # Python scripts directory
 └── script.py
+
+- **.devcontainer/**
+  - devcontainer.json
+- **.env**
+- **.python-version**
+- **Dockerfile**
+- **docker-compose.yml**
+- **init.sql**
+- **requirements.txt**
+- **README.md**
+- **notebooks/**
+  - example_notebook.ipynb
+- **your_python_scripts/**
+  - script.py
 
 ## Setup Instructions
 
