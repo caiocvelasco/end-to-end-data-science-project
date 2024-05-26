@@ -1,6 +1,6 @@
 # End-to-End Data Science Project
 
-A brief description of your project.
+(WORK IN PROGRESS)
 
 ## Table of Contents
 
@@ -14,20 +14,7 @@ A brief description of your project.
 
 ## Project Structure
 
-name_of_your_project_repo(project-root)/
-├── .devcontainer/
-│ └── devcontainer.json
-├── .gitignore # Ignore sensitive information
-├── .env
-├── .python-version
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── notebooks/ # Jupyter notebooks directory
-│ └── example_notebook.ipynb
-└── your_python_scripts/ # Python scripts directory
-└── script.py
-
+- **name_of_your_project_repo (project-root)/**
 - **.devcontainer/**
   - devcontainer.json
 - **.env**
