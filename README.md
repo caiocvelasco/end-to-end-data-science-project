@@ -43,9 +43,9 @@ Make sure you have the following installed on your local development environment
 
 Create a `.env` file in the project root with the following content:
 
-POSTGRES_USER=your_postgres_user
-POSTGRES_PASSWORD=your_postgres_password
-POSTGRES_DB=your_postgres_db
+- POSTGRES_USER=your_postgres_user
+- POSTGRES_PASSWORD=your_postgres_password
+- POSTGRES_DB=your_postgres_db
 
 
 ### Build and Run
