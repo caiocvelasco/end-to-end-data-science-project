@@ -15,19 +15,19 @@
 ## Project Structure
 
 - **name_of_your_project_repo (project-root)/**
-- **.devcontainer/**
-  - devcontainer.json
-- **.env**
-- **.python-version**
-- **Dockerfile**
-- **docker-compose.yml**
-- **init.sql**
-- **requirements.txt**
-- **README.md**
-- **notebooks/**
-  - example_notebook.ipynb
-- **your_python_scripts/**
-  - script.py
+    - **.devcontainer/**
+    - devcontainer.json
+    - **.env**
+    - **.python-version**
+    - **Dockerfile**
+    - **docker-compose.yml**
+    - **init.sql**
+    - **requirements.txt**
+    - **README.md**
+    - **notebooks/**
+    - example_notebook.ipynb
+    - **your_python_scripts/**
+    - script.py
 
 ## Setup Instructions
 
