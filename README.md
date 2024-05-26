@@ -60,4 +60,10 @@ POSTGRES_DB=your_postgres_db
 
     When you open VSCode, it will automatically ask if you want to reopen the repo folder in a container and it will build for you.
 
+### Services
+
+- **Postgres**: A PostgreSQL database instance.
+- **Python**: A container running Python 3.9.13 with necessary dependencies.
+- **Jupyter Notebook**: A Jupyter Notebook instance for interactive data analysis.
+
 (WORK IN PROGRESS)
