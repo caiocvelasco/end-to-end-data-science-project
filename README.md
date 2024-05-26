@@ -53,8 +53,8 @@ Create a `.env` file in the project root with the following content:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/caiocvelasco/end-to-end-data-science-project.git
+   cd end-to-end-data-science-project
 
 2. **Build and start the containers:**
 
