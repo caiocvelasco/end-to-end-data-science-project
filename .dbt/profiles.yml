@@ -1,0 +1,13 @@
+my_dbt_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: public
+      port: 5432
+
+# For reference: https://docs.getdbt.com/reference/dbt-jinja-functions/env_var
