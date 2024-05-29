@@ -2,12 +2,6 @@
 *.pyc
 __pycache__
 
-# Ignore the sources directory and everything inside it
-sources/
-
-# Ignore the learning directory and everything inside it
-learning/
-
 # Ignore .env files
 .env
 
