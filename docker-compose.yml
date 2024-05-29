@@ -22,7 +22,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data # This volume specifies the postgres storage path
       - ~/.ssh:/root/.ssh  # Mount SSH directory into the container
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql # From the local init.sql, automatically create schemas/tables in the database mounting as a volume inside the docker entrypoint folder
     networks:
       - etl_network
 
