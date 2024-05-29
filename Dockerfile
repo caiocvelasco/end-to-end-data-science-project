@@ -16,14 +16,18 @@ RUN apt-get update && \
         apt-get clean && \   
         rm -rf /var/lib/apt/lists/*
 
-# Install ipykernel
-RUN pip install --no-cache-dir ipykernel
+# Install the latest version of dbt Core and the dbt-postgres adapter
+RUN pip install --no-cache-dir --upgrade dbt-core dbt-postgres
 
-# Add Python kernel to Jupyter
-RUN python -m ipykernel install --user --name python_postgresql --display-name "Python PostgreSQL"
+# If you want to use the Jupyter Notebook service, uncomment lines the below.
+# # Install ipykernel
+# RUN pip install --no-cache-dir ipykernel
 
-# Install Jupyter extension for VSCode
-RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/jupyter.sh)"
+# # Add Python kernel to Jupyter
+# RUN python -m ipykernel install --user --name python_postgresql --display-name "Python PostgreSQL"
+
+# # Install Jupyter extension for VSCode
+# RUN /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/jupyter.sh)"
 
 # Copy requirements.txt and install dependencies
 COPY requirements.txt .

@@ -1,0 +1,28 @@
+my_dbt_profile:
+  
+  outputs:
+  
+    dev:
+      type: postgres
+      host: postgres
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: public # this is where the source tables will be
+      port: 5432
+      threads: 4
+
+    prod: # for now, we only have the database above, but I will let it here
+      type: postgres
+      host: [host]
+      user: [prod_user]
+      password: [prod_password]
+      dbname: [dbname]
+      schema: [prod_schema]
+      port: [port]
+      threads: [1 or more]
+  
+  target: dev # by default dbt will connect to the 'dev' database above
+
+
+# For reference: https://docs.getdbt.com/reference/dbt-jinja-functions/env_var

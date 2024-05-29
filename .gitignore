@@ -1,11 +1,11 @@
 # Ignore Python bytecode files
 *.pyc
-
-# Ignore the sources directory and everything inside it
-sources/
-
-# Ignore the learning directory and everything inside it
-learning/
+__pycache__
 
 # Ignore .env files
 .env
+
+# Ignore dbt files
+target/
+dbt_packages/
+logs/

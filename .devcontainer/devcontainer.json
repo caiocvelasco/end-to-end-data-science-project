@@ -1,13 +1,20 @@
 {
     "name": "Python PostgreSQL",
     "dockerComposeFile": "../docker-compose.yml",
-    "service": "python",
+    "service": "dbt", 
     "workspaceFolder": "/workspace",
     "extensions": [
         "ms-python.python",
-        "ms-toolsai.jupyter"
+    //  "ms-toolsai.jupyter"
     ],
     "settings": {
         "terminal.integrated.shell.linux": null
     }
 }
+
+// Using "service": "dbt" instead of "python"
+// The dbt service will be the primary container where your VS Code editor will operate.
+// Your workspace and environment will be set up based on the dbt service configuration.
+// Any commands or tools you execute within the VS Code terminal will run in the context of the dbt container.
+// This means any scripts, commands, or dbt-related tasks you run will have access to the environment variables and dependencies defined in the dbt service.
+// The extensions specified in devcontainer.json (ms-python.python and ms-toolsai.jupyter) will be installed in the dbt container due to the above.
