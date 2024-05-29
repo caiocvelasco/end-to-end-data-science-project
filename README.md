@@ -17,7 +17,7 @@
 
 - **name_of_your_project_repo (project-root)/**
     - **.devcontainer/**
-    - devcontainer.json
+      - devcontainer.json
     - **.dbt**
       - profiles.yml
     - **.env**
@@ -28,8 +28,6 @@
     - **dbt_project.yml**
     - **requirements.txt**
     - **README.md**
-    - **init.sql** (to be deprecated after dbt is installed)
-    - **ingest_fake_data.py** (to be deprecated after dbt is installed)
 
 ## Setup Instructions
 
