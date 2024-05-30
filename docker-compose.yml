@@ -59,7 +59,8 @@ services:
     command: sleep infinity  # Add this line to keep the container running
     networks:
       - etl_network
-          
+
+     
   # jupyter_notebook:
   #     image: jupyter/minimal-notebook
   #     container_name: jupyter_notebook
