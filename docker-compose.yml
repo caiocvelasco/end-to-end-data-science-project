@@ -50,10 +50,9 @@ services:
     env_file:
       - ./.env
     volumes:
-      - .:/workspace
       - ~/.ssh:/root/.ssh
-      - ./.dbt:/root/.dbt  # Mount the local .dbt directory
-    working_dir: /workspace
+      - ./dbt:/workspace/dbt
+    working_dir: /workspace/dbt
     depends_on:
       - postgres
     command: sleep infinity  # Add this line to keep the container running
