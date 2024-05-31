@@ -7,7 +7,10 @@ WORKDIR /workspace
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1
+    PYTHONUNBUFFERED=1 \
+    # dbt will look for the profiles.yml according to the below
+    DBT_PROFILES_DIR=/workspace/dbt/.dbt
+    
 
 # Install necessary dependencies
 RUN apt-get update && \
@@ -35,3 +38,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
 COPY . .
+
+# Run docker image prune before rebuilding containers
+# RUN docker image prune -f
